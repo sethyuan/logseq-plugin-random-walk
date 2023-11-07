@@ -1,0 +1,4 @@
+{
+  "Random walk among pages/blocks with the tags specified here. Leave it empty to walk among all pages.": "在含有这里指定标签的页面/块之间随机游走。留空在全部页面间游走。",
+  "Shortcut to trigger a random walk. Leave it empty to disable the shortcut.": "触发随机游走的快捷键。留空禁用快捷键。"
+}
