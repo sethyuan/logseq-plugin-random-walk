@@ -59,9 +59,9 @@ async function getRandomResults(): Promise<string[]> {
     tags === '""'
       ? (
           await logseq.DB.datascriptQuery(
-            `[:find (pull ?p [:block/uuid]) :where [?p :block/name] [?p :block/journal? false]]`,
+            `[:find (pull ?p [:block/name]) :where [?p :block/name] [?p :block/journal? false]]`,
           )
-        ).map(([{ uuid }]: { uuid: string }[]) => uuid)
+        ).map(([{ name }]: { name: string }[]) => name)
       : (
           await logseq.DB.datascriptQuery(
             `[:find (pull ?b [:block/uuid :block/name])
