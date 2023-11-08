@@ -6,6 +6,8 @@
 
 ## 使用展示
 
+https://github.com/sethyuan/logseq-plugin-random-walk/assets/3410293/19f68dfa-75e8-437b-9f98-7a798d7ae74e
+
 ## Buy me a coffee
 
 如果您认为我所开发的软件对您有所帮助，并且愿意给予肯定和支持，不妨扫描下方的二维码进行打赏。感谢您的支持与关注。
