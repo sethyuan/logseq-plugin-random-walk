@@ -1,5 +1,5 @@
 {
-  "name": "logseq-plugin-random-walk",
+  "name": "Random Walk",
   "version": "0.1.0",
   "main": "dist/index.html",
   "logseq": {
@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "@logseq/libs": "^0.0.15",
-    "logseq-l10n": "^0.2.0"
+    "logseq-l10n": "^0.2.0",
+    "rambdax": "^10.0.0"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",

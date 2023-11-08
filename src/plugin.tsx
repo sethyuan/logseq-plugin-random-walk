@@ -1,5 +1,6 @@
 import "@logseq/libs"
 import { setup, t } from "logseq-l10n"
+import { shuffle } from "rambdax"
 import zhCN from "./translations/zh-CN.json"
 
 let results: string[] = []
@@ -41,10 +42,6 @@ async function main() {
 
   const settingsOff = logseq.onSettingsChanged(onSettingsChange)
 
-  requestIdleCallback(async () => {
-    results = await getRandomResults()
-  })
-
   logseq.beforeunload(async () => {
     settingsOff()
   })
@@ -53,8 +50,38 @@ async function main() {
 }
 
 async function getRandomResults(): Promise<string[]> {
-  // TODO
-  return []
+  const tags = logseq.settings?.tags
+    .split(/[,，]\s*/)
+    .map((tag: string) => `"${tag.toLowerCase()}"`)
+    .join(" ")
+
+  const results =
+    tags === '""'
+      ? (
+          await logseq.DB.datascriptQuery(
+            `[:find (pull ?p [:block/uuid]) :where [?p :block/name] [?p :block/journal? false]]`,
+          )
+        ).map(([{ uuid }]: { uuid: string }[]) => uuid)
+      : (
+          await logseq.DB.datascriptQuery(
+            `[:find (pull ?b [:block/uuid :block/name])
+            :where
+            [?t :block/name ?name]
+            [(contains? #{${tags}} ?name)]
+            (or-join [?b ?t]
+              (and
+                [?b :block/refs ?t]
+                (not [?b :block/pre-block?]))
+              (and
+                [?pre :block/refs ?t]
+                [?pre :block/pre-block? true]
+                [?pre :block/page ?b]))]`,
+          )
+        ).map(
+          ([{ uuid, name }]: { uuid: string; name?: string }[]) => name ?? uuid,
+        )
+
+  return shuffle(results)
 }
 
 async function gotoNext() {

@@ -11,6 +11,9 @@ dependencies:
   logseq-l10n:
     specifier: ^0.2.0
     version: 0.2.0(@logseq/libs@0.0.15)
+  rambdax:
+    specifier: ^10.0.0
+    version: 10.0.0
 
 devDependencies:
   '@types/node':
@@ -389,6 +392,10 @@ packages:
   /process@0.11.10:
     resolution: {integrity: sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==}
     engines: {node: '>= 0.6.0'}
+    dev: false
+
+  /rambdax@10.0.0:
+    resolution: {integrity: sha512-yNlWz9g4h6C2+49r1L+L9WZLcw3b3mQnxZQfcyqon8hy52Ie6hsWeuxO9/MNXTbqWB2RuSzO5MM3rVSsPKsqfw==}
     dev: false
 
   /rollup@3.29.4:
